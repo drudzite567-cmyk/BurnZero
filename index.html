@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ec">
+  <meta name="description" content="BurnZero helps busy professionals and property investors protect their energy, prevent burnout, and perform for the long run.">
+  <title>BurnZero — Make room for the long run</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: light; --paper:#f4f2ec; --ink:#172c26; --muted:#5e6c64; --green:#244f3c; --lime:#c7e779; --coral:#ef795f; --line:#d9ddd4; --sans:"DM Sans",sans-serif; --display:"Manrope",sans-serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); }
+    a { color:inherit; text-decoration:none; }
+    button { color:inherit; font:inherit; }
+    :focus-visible { outline:3px solid var(--coral); outline-offset:4px; }
+    .topbar { position:absolute; z-index:2; top:0; left:0; display:flex; width:100%; min-height:84px; align-items:center; justify-content:space-between; padding:0 6.1vw; color:white; }
+    .wordmark { display:inline-flex; align-items:center; gap:10px; font-family:var(--display); font-size:20px; font-weight:800; }
+    .mark { display:grid; width:28px; height:28px; place-items:center; border:1px solid var(--lime); border-radius:50%; color:var(--lime); font-size:17px; line-height:1; }
+    .nav { display:flex; align-items:center; gap:36px; font-size:13px; font-weight:600; }
+    .nav a:not(.nav-cta) { color:#f2f4ef; }
+    .nav-cta { padding:12px 17px; border:1px solid rgb(255 255 255 / 60%); border-radius:3px; }
+    .hero { position:relative; display:flex; min-height:min(770px,87svh); align-items:center; overflow:hidden; background:#233d31 url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2400&q=85") center 53%/cover no-repeat; color:white; }
+    .hero::before { position:absolute; inset:0; background:linear-gradient(90deg,rgb(13 34 25 / 86%) 0%,rgb(13 34 25 / 64%) 38%,rgb(13 34 25 / 10%) 100%); content:""; }
+    .hero-content { position:relative; width:min(690px,84vw); margin:65px 0 0 10.5vw; animation:arrive .75s ease both; }
+    .eyebrow { display:flex; align-items:center; gap:11px; margin:0 0 22px; color:var(--lime); font-size:11px; font-weight:700; text-transform:uppercase; }
+    .eyebrow::before { width:28px; height:1px; background:currentColor; content:""; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:650px; margin-bottom:22px; font-family:var(--display); font-size:clamp(52px,7.3vw,94px); font-weight:600; line-height:.98; }
+    .hero-copy { max-width:430px; margin-bottom:30px; color:#e1e8e0; font-size:16px; line-height:1.7; }
+    .button { display:inline-flex; min-height:50px; align-items:center; justify-content:center; gap:13px; padding:0 20px; border:0; border-radius:3px; background:var(--lime); color:#1a3026; cursor:pointer; font-size:13px; font-weight:700; transition:background .18s ease,transform .18s ease; }
+    .button:hover { transform:translateY(-2px); background:#d7f19b; }
+    .button svg { width:15px; height:15px; }
+    .hero-note { margin:14px 0 0; color:#d3ddd5; font-size:11px; }
+    .hero-index { position:absolute; right:6.1vw; bottom:37px; color:#e4e9e4; font-size:11px; }
+    .hero-index span { padding-left:10px; color:var(--lime); }
+    .intro { display:grid; grid-template-columns:1fr 1.15fr; gap:8vw; padding:93px 10.5vw 100px; }
+    .section-label { margin:5px 0 0; color:#59715f; font-size:11px; font-weight:700; text-transform:uppercase; }
+    .intro h2,.approach h2,.close h2 { margin-bottom:0; font-family:var(--display); font-size:clamp(34px,4.4vw,55px); font-weight:600; line-height:1.12; }
+    .intro h2 em { color:#658351; font-style:normal; }
+    .intro-copy { max-width:520px; padding-top:7px; color:var(--muted); font-size:15px; line-height:1.8; }
+    .intro-copy p { margin-bottom:17px; }
+    .text-link { display:inline-flex; align-items:center; gap:9px; margin-top:3px; color:var(--green); font-size:13px; font-weight:700; }
+    .text-link span { color:var(--coral); font-size:19px; transition:transform .18s ease; }
+    .text-link:hover span { transform:translateX(4px); }
+    .approach { padding:82px 10.5vw 91px; background:#e8ebe3; }
+    .approach-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:48px; }
+    .approach-heading .section-label { margin-bottom:12px; }
+    .approach-heading h2 { max-width:500px; }
+    .approach-heading>p { max-width:295px; margin-bottom:5px; color:var(--muted); font-size:14px; line-height:1.7; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid #c9d0c6; }
+    .step { min-height:208px; padding:23px 28px 0 0; }
+    .step+.step { padding-left:28px; border-left:1px solid #c9d0c6; }
+    .step-number { color:#71866e; font-family:var(--display); font-size:13px; }
+    .step h3 { margin:25px 0 10px; font-family:var(--display); font-size:20px; font-weight:700; }
+    .step p { max-width:290px; margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
+    .close { position:relative; display:grid; min-height:365px; grid-template-columns:1fr auto; align-items:center; gap:40px; overflow:hidden; padding:72px 10.5vw; background:var(--green); color:white; }
+    .close::after { position:absolute; right:14%; bottom:-162px; width:335px; height:335px; border:1px solid rgb(199 231 121 / 30%); border-radius:50%; box-shadow:0 0 0 38px rgb(199 231 121 / 8%),0 0 0 77px rgb(199 231 121 / 5%); content:""; pointer-events:none; }
+    .close .section-label { margin-bottom:16px; color:var(--lime); }
+    .close h2 { max-width:600px; }
+    .close .button { position:relative; z-index:1; white-space:nowrap; }
+    footer { display:flex; min-height:94px; align-items:center; justify-content:space-between; gap:20px; padding:20px 6.1vw; color:#637168; font-size:11px; }
+    footer .wordmark { color:var(--ink); font-size:16px; }
+    footer .mark { width:24px; height:24px; border-color:var(--green); color:var(--green); font-size:14px; }
+    .footer-note { margin:0; }
+    dialog { width:min(520px,calc(100% - 32px)); max-height:min(720px,calc(100% - 32px)); padding:0; border:0; border-radius:5px; background:var(--paper); color:var(--ink); box-shadow:0 24px 100px rgb(10 24 17 / 32%); }
+    dialog::backdrop { background:rgb(13 34 25 / 72%); backdrop-filter:blur(4px); }
+    .checkin { padding:31px; }
+    .checkin-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:25px; }
+    .checkin-brand { color:var(--green); font-family:var(--display); font-size:14px; font-weight:800; }
+    .close-dialog { display:grid; width:34px; height:34px; place-items:center; border:1px solid var(--line); border-radius:50%; background:transparent; cursor:pointer; font-size:19px; }
+    .progress-track { height:3px; margin-bottom:28px; background:#dce1d7; }
+    .progress-fill { width:33.333%; height:100%; background:#74994b; transition:width .2s ease; }
+    .checkin .section-label { margin-bottom:12px; }
+    .checkin h2 { margin-bottom:10px; font-family:var(--display); font-size:29px; font-weight:700; line-height:1.15; }
+    .checkin-hint { margin-bottom:20px; color:var(--muted); font-size:13px; line-height:1.6; }
+    .answers { display:grid; gap:9px; }
+    .answer { display:flex; min-height:48px; align-items:center; justify-content:space-between; gap:12px; padding:11px 14px; border:1px solid var(--line); border-radius:3px; background:transparent; cursor:pointer; text-align:left; font-size:13px; transition:border-color .15s ease,background .15s ease; }
+    .answer:hover { border-color:#739552; background:#ebefe4; }
+    .answer span:last-child { color:#7b8c75; }
+    .checkin-bottom { display:flex; min-height:53px; align-items:end; justify-content:space-between; margin-top:15px; color:#65736a; font-size:11px; }
+    .checkin-bottom .button { min-height:40px; padding:0 16px; }
+    .checkin-bottom .button:disabled { background:#dce1d7; color:#849087; cursor:not-allowed; transform:none; }
+    .result { padding:10px 0 3px; }
+    .result .section-label { margin-bottom:14px; }
+    .result p { color:var(--muted); font-size:14px; line-height:1.7; }
+    .result .button { margin-top:5px; }
+    @keyframes arrive { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+    @media (max-width:760px) {
+      .topbar { min-height:72px; padding:0 6vw; }
+      .nav { gap:17px; }
+      .nav a:not(.nav-cta) { display:none; }
+      .nav-cta { padding:10px 12px; font-size:11px; }
+      .hero { min-height:680px; min-height:82svh; background-position:58% center; }
+      .hero::before { background:linear-gradient(90deg,rgb(13 34 25 / 82%),rgb(13 34 25 / 48%)); }
+      .hero-content { width:84vw; margin:64px 0 0 8vw; }
+      h1 { max-width:480px; font-size:clamp(52px,12vw,78px); }
+      .hero-copy { max-width:380px; font-size:15px; }
+      .hero-index { right:7vw; bottom:23px; }
+      .intro { grid-template-columns:1fr; gap:29px; padding:66px 8vw 72px; }
+      .intro h2,.approach h2,.close h2 { font-size:39px; }
+      .intro-copy { padding:0; }
+      .approach { padding:66px 8vw 58px; }
+      .approach-heading { display:block; margin-bottom:32px; }
+      .approach-heading>p { margin:18px 0 0; }
+      .steps { grid-template-columns:1fr; }
+      .step,.step+.step { min-height:0; padding:20px 0 22px; border:0; border-bottom:1px solid #c9d0c6; }
+      .step h3 { margin:14px 0 7px; }
+      .step p { max-width:420px; }
+      .close { min-height:350px; grid-template-columns:1fr; align-content:center; justify-items:start; gap:24px; padding:58px 8vw; }
+      .close .button { white-space:normal; }
+      .close::after { right:-80px; bottom:-200px; }
+      footer { align-items:flex-start; flex-direction:column; justify-content:center; gap:10px; padding:22px 8vw; }
+      .checkin { padding:24px; }
+    }
+    @media (max-width:380px) { .wordmark { font-size:18px; } .hero { min-height:690px; min-height:84svh; } h1 { font-size:50px; } .intro h2,.approach h2,.close h2 { font-size:35px; } .checkin { padding:19px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="#home" aria-label="BurnZero home"><span class="mark" aria-hidden="true">b</span>burnzero</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#why">Why BurnZero</a>
+      <a href="#approach">Our approach</a>
+      <a class="nav-cta" href="#check-in" data-open-checkin>Take a check-in <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">For people with a lot on the line</p>
+        <h1 id="hero-title">Make room for the long run.</h1>
+        <p class="hero-copy">Ambition shouldn't cost you your health. Build a way of working that protects your energy and keeps your performance sustainable.</p>
+        <button class="button" type="button" data-open-checkin>Take the 2-minute check-in <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="hero-note">A private moment to check in with yourself.</p>
+      </div>
+      <p class="hero-index">01 <span>/ 03</span></p>
+    </section>
+    <section class="intro" id="why" aria-labelledby="why-title">
+      <p class="section-label">The case for a reset</p>
+      <div>
+        <h2 id="why-title">You can be capable<br>and <em>running on empty.</em></h2>
+        <div class="intro-copy">
+          <p>When work, people, and investments all need your attention, pushing through can start to feel like the only option. It isn't a strategy for the long run.</p>
+          <p>BurnZero helps busy professionals and property investors spot the strain earlier, make deliberate changes, and protect the capacity that got them this far.</p>
+          <a class="text-link" href="#approach">A steadier way forward <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="approach" id="approach" aria-labelledby="approach-title">
+      <div class="approach-heading">
+        <div><p class="section-label">The BurnZero approach</p><h2 id="approach-title">Small shifts.<br>More staying power.</h2></div>
+        <p>No overnight reinvention. Just a clearer picture of what's draining you and practical steps that fit real life.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><span class="step-number">01 / Notice</span><h3>See the signals</h3><p>Make space to notice what's changing before “just tired” becomes your normal.</p></article>
+        <article class="step"><span class="step-number">02 / Rebalance</span><h3>Protect your capacity</h3><p>Find the pressures you can shift and the boundaries that help you recover.</p></article>
+        <article class="step"><span class="step-number">03 / Sustain</span><h3>Keep what works</h3><p>Build steadier habits around the work and commitments that matter to you.</p></article>
+      </div>
+    </section>
+    <section class="close" id="check-in" aria-labelledby="close-title">
+      <div><p class="section-label">Start where you are</p><h2 id="close-title">How are you, really?</h2></div>
+      <button class="button" type="button" data-open-checkin>Take a private check-in <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </section>
+  </main>
+  <footer>
+    <a class="wordmark" href="#home"><span class="mark" aria-hidden="true">b</span>burnzero</a>
+    <p class="footer-note">Protect your energy. Perform for the long run.</p>
+    <span>© <span id="year"></span> BurnZero</span>
+  </footer>
+  <dialog id="checkin-dialog" aria-labelledby="checkin-title">
+    <div class="checkin">
+      <div class="checkin-top"><span class="checkin-brand">burnzero / check-in</span><button class="close-dialog" type="button" aria-label="Close check-in">×</button></div>
+      <div class="progress-track" aria-label="Question progress"><div class="progress-fill"></div></div>
+      <div id="question-view">
+        <p class="section-label" id="question-count">Question 1 of 3</p>
+        <h2 id="checkin-title"></h2>
+        <p class="checkin-hint">Choose the answer that feels closest today.</p>
+        <div class="answers" role="group" aria-labelledby="checkin-title"></div>
+        <div class="checkin-bottom"><span>Your answers stay in this browser.</span><button class="button next-button" type="button" disabled>Next <span aria-hidden="true">→</span></button></div>
+      </div>
+      <div class="result" hidden aria-live="polite"></div>
+    </div>
+  </dialog>
+  <script>
+    const questions = [
+      { prompt:"How rested do you feel when you start the day?", answers:["Ready to take things on","A little behind on rest","Already running low"] },
+      { prompt:"How much room do you have to switch off?", answers:["Enough to recharge","Some, but it gets crowded out","Very little right now"] },
+      { prompt:"How manageable does your current pace feel?", answers:["Steady and manageable","Busy, but I can keep up","Hard to sustain"] }
+    ];
+    const dialog = document.querySelector("#checkin-dialog");
+    const questionView = document.querySelector("#question-view");
+    const questionTitle = document.querySelector("#checkin-title");
+    const questionCount = document.querySelector("#question-count");
+    const answersContainer = document.querySelector(".answers");
+    const progressFill = document.querySelector(".progress-fill");
+    const nextButton = document.querySelector(".next-button");
+    const result = document.querySelector(".result");
+    let questionIndex = 0;
+    let selectedAnswer = null;
+    let score = 0;
+
+    function renderQuestion() {
+      const question = questions[questionIndex];
+      selectedAnswer = null;
+      questionTitle.textContent = question.prompt;
+      questionCount.textContent = `Question ${questionIndex + 1} of ${questions.length}`;
+      progressFill.style.width = `${((questionIndex + 1) / questions.length) * 100}%`;
+      nextButton.disabled = true;
+      answersContainer.replaceChildren(...question.answers.map((answer, index) => {
+        const button = document.createElement("button");
+        button.className = "answer";
+        button.type = "button";
+        button.setAttribute("aria-pressed", "false");
+        const label = document.createElement("span");
+        label.textContent = answer;
+        const marker = document.createElement("span");
+        marker.setAttribute("aria-hidden", "true");
+        marker.textContent = "○";
+        button.append(label, marker);
+        button.addEventListener("click", () => {
+          selectedAnswer = index;
+          answersContainer.querySelectorAll(".answer").forEach((item) => {
+            const active = item === button;
+            item.setAttribute("aria-pressed", String(active));
+            item.lastElementChild.textContent = active ? "●" : "○";
+          });
+          nextButton.disabled = false;
+        });
+        return button;
+      }));
+    }
+
+    function openCheckin() {
+      questionIndex = 0;
+      score = 0;
+      result.hidden = true;
+      result.replaceChildren();
+      questionView.hidden = false;
+      renderQuestion();
+      dialog.showModal();
+    }
+
+    document.querySelectorAll("[data-open-checkin]").forEach((button) => button.addEventListener("click", (event) => {
+      event.preventDefault();
+      openCheckin();
+    }));
+    document.querySelector(".close-dialog").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    nextButton.addEventListener("click", () => {
+      if (selectedAnswer === null) return;
+      score += selectedAnswer;
+      questionIndex += 1;
+      if (questionIndex < questions.length) {
+        renderQuestion();
+        return;
+      }
+      questionView.hidden = true;
+      result.hidden = false;
+      const label = document.createElement("p");
+      label.className = "section-label";
+      label.textContent = "Your check-in";
+      const heading = document.createElement("h2");
+      const message = document.createElement("p");
+      if (score <= 2) {
+        heading.textContent = "Keep protecting what works.";
+        message.textContent = "Your answers point to a steadier moment. Keep making room for rest and the routines that help you feel like yourself.";
+      } else if (score <= 5) {
+        heading.textContent = "Worth paying attention to.";
+        message.textContent = "Some parts of your pace may be asking for a reset. Choose one pressure you can make lighter this week, and give recovery a place on the calendar.";
+      } else {
+        heading.textContent = "You don't have to push through alone.";
+        message.textContent = "Your answers suggest your current pace feels heavy. Consider talking with someone you trust or a qualified professional, and start with one small way to reduce the load.";
+      }
+      const done = document.createElement("button");
+      done.className = "button";
+      done.type = "button";
+      done.textContent = "Done";
+      done.addEventListener("click", () => dialog.close());
+      result.append(label, heading, message, done);
+      progressFill.style.width = "100%";
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
